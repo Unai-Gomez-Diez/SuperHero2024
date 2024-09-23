@@ -6,7 +6,6 @@ data class SuperHero (
     val slug: String?,
     val powerStats: PowerStats,
     val appearance: Appearance,
-
     val biography: Biography,
     val work: Work,
     val images: Images
