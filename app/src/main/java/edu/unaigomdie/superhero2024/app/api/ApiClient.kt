@@ -9,5 +9,5 @@ class ApiClient {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-
+    var apiService: ApiService = retrofit.create(ApiService::class.java)
 }

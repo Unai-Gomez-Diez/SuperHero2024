@@ -8,8 +8,12 @@ import retrofit2.http.Path
 import retrofit2.Response
 
 interface ApiService {
-    @GET("heroes.json")
+    @GET("all.json")
     suspend fun getHeroes(): Response<List<SuperHero>>
+
+    @GET("id/{id}.json")
+    suspend fun getHero(@Path("id") id: String): Response<SuperHero>
+
 
 
 }

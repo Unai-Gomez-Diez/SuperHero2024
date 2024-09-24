@@ -14,6 +14,10 @@ class SuperHeroActivity : AppCompatActivity() {
         runBlocking {
             val superHeros = viewModel.getSuperHeroes()
             Log.d("@dev", superHeros.toString())
+
+            val superHero = viewModel.getSuperHero("2")
+            Log.d("@dev", superHero.toString())
+
         }
 
     }
