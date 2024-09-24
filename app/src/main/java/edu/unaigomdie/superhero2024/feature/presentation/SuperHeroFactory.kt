@@ -6,8 +6,11 @@ import edu.unaigomdie.superhero2024.feature.domain.GetSuperHeroUseCase
 import edu.unaigomdie.superhero2024.feature.domain.GetSuperHeroesUseCase
 
 class SuperHeroFactory {
+    private val superHeroDataRepository = SuperHeroDataRepository(SuperHeroRemoteDataSource())
     fun buildViewModel(): SuperHeroViewModel {
-        return SuperHeroViewModel(GetSuperHeroesUseCase(SuperHeroDataRepository(SuperHeroRemoteDataSource())),
-            GetSuperHeroUseCase(SuperHeroDataRepository(SuperHeroRemoteDataSource())))
+        return SuperHeroViewModel(
+            GetSuperHeroesUseCase(superHeroDataRepository),
+            GetSuperHeroUseCase(superHeroDataRepository)
+        )
     }
 }
