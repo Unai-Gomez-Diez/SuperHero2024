@@ -17,8 +17,6 @@ class SuperHeroActivity : AppCompatActivity() {
 
             val superHero = viewModel.getSuperHero("2")
             Log.d("@dev", superHero.toString())
-
         }
-
     }
 }

@@ -4,5 +4,4 @@ interface SuperHeroRepository {
     suspend fun getSuperHeroes(): List<SuperHero>
 
     suspend fun getSuperHero(id: String): SuperHero?
-
 }
