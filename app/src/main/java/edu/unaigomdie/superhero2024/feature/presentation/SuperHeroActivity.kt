@@ -7,10 +7,14 @@ import edu.unaigomdie.superhero2024.R
 import kotlinx.coroutines.runBlocking
 
 class SuperHeroActivity : AppCompatActivity() {
+
+    private val superHeroFactory = SuperHeroFactory()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val viewModel = SuperHeroFactory().buildViewModel()
+        val viewModel = superHeroFactory.buildViewModel()
+
         runBlocking {
             val superHeros = viewModel.getSuperHeroes()
             Log.d("@dev", superHeros.toString())
