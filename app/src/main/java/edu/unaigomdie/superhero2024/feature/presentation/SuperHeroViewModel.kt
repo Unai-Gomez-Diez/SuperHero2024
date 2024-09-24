@@ -14,7 +14,12 @@ ViewModel(){
     }
 
     suspend fun getSuperHero(id: String): SuperHero?{
-        return getSuperHeroUseCase.invoke(id)
+        var superHero: SuperHero? = null
 
+        superHero = getSuperHeroUseCase.invoke(id)
+
+
+
+        return superHero
     }
 }
