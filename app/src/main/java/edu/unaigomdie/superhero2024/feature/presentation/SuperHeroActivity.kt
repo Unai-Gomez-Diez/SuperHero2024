@@ -5,7 +5,10 @@ import android.util.Log
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import edu.unaigomdie.superhero2024.R
+import edu.unaigomdie.superhero2024.databinding.FragmentSuperHeroBinding
 import edu.unaigomdie.superhero2024.feature.domain.SuperHero
 import edu.unaigomdie.superhero2024.feature.presentation.adapter.SuperHeroAdapter
 import kotlinx.coroutines.GlobalScope
@@ -13,26 +16,47 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 class SuperHeroActivity : AppCompatActivity() {
+    private var _binding: FragmentSuperHeroBinding? = null
+    private val binding get() = _binding!!
+    private val adapter = SuperHeroAdapter()
 
     private val superHeroFactory = SuperHeroFactory()
     private val viewModel = superHeroFactory.buildViewModel()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        _binding = FragmentSuperHeroBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
+
+        setupView()
 
         runBlocking {
             val superHeros = viewModel.getSuperHeroes()
-            val adapter = SuperHeroAdapter()
-            TODO("add adapter")
-            //  Log.d("@dev", superHeros.toString())
+            adapter.submitList(superHeros)
+            binding.list.adapter = adapter
 
-            //     val superHero = viewModel.getSuperHero("2")
-            // Log.d("@dev", superHero.toString())
-            bindData(superHeros)
+
+            // Log.d("@dev", superHeros.toString())
+
+            //bindData(superHeros)
         }
 
 
+    }
+
+    private fun setupView() {
+        binding.apply {
+            list.apply {
+                layoutManager = GridLayoutManager(
+                    this@SuperHeroActivity,
+                    1,
+                    LinearLayoutManager.VERTICAL,
+                    false
+                )
+                adapter = this@SuperHeroActivity.adapter
+            }
+        }
     }
 
     private fun bindData(superHeroes: List<SuperHero>) {

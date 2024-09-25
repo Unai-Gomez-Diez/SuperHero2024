@@ -11,7 +11,7 @@ class SuperHeroViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
     fun bind(superHero: SuperHero) {
         itemSuperHero.apply {
             nombre.text = superHero.name
-            slug.text = superHero.id.toString()
+            slug.text = superHero.slug
 
         }
 
