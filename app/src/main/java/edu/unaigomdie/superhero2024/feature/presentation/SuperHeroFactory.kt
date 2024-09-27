@@ -10,14 +10,21 @@ import edu.unaigomdie.superhero2024.feature.domain.GetSuperHeroesUseCase
 import edu.unaigomdie.superhero2024.feature.domain.SetSuperHeroUseCase
 
 class SuperHeroFactory(context: Context) {
-    private val superHeroDataRepository = SuperHeroDataRepository(SuperHeroRemoteDataSource(),
-        SuperHeroXmlLocalDataSource(context)
+    private val superHeroRemoteDataSource = SuperHeroRemoteDataSource()
+    private val superHeroXmlLocalDataSource = SuperHeroXmlLocalDataSource(context)
+    private val superHeroDataRepository = SuperHeroDataRepository(
+        superHeroRemoteDataSource,
+        superHeroXmlLocalDataSource
     )
+    private val getSuperHeroUseCase = GetSuperHeroUseCase(superHeroDataRepository)
+    private val getSuperHeroesUseCase = GetSuperHeroesUseCase(superHeroDataRepository)
+    private val setSuperHeroUseCase = SetSuperHeroUseCase(superHeroDataRepository)
+
     fun buildViewModel(): SuperHeroViewModel {
         return SuperHeroViewModel(
-            GetSuperHeroesUseCase(superHeroDataRepository),
-            GetSuperHeroUseCase(superHeroDataRepository),
-            SetSuperHeroUseCase(superHeroDataRepository)
+            getSuperHeroesUseCase,
+            getSuperHeroUseCase,
+            setSuperHeroUseCase
         )
     }
 }
