@@ -20,13 +20,18 @@ class SuperHeroActivity : AppCompatActivity() {
     private val binding get() = _binding!!
     private val adapter = SuperHeroAdapter()
 
-    private val superHeroFactory = SuperHeroFactory()
-    private val viewModel = superHeroFactory.buildViewModel()
+    //private var superHeroFactory = SuperHeroFactory(this)
+    //private val viewModel = superHeroFactory.buildViewModel()
+
+    private lateinit var superHeroFactory: SuperHeroFactory
+    private lateinit var viewModel: SuperHeroViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = FragmentSuperHeroBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        superHeroFactory = SuperHeroFactory(this)
+        viewModel = superHeroFactory.buildViewModel()
 
 
         setupView()
@@ -35,7 +40,8 @@ class SuperHeroActivity : AppCompatActivity() {
             val superHeros = viewModel.getSuperHeroes()
             adapter.submitList(superHeros)
             binding.list.adapter = adapter
-
+            val superHero1 = viewModel.getSuperHero("3")
+            viewModel.setSuperHero(superHero1!!)
 
             // Log.d("@dev", superHeros.toString())
 

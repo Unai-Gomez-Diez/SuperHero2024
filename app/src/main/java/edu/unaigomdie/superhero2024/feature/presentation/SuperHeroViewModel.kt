@@ -3,10 +3,12 @@ package edu.unaigomdie.superhero2024.feature.presentation
 import androidx.lifecycle.ViewModel
 import edu.unaigomdie.superhero2024.feature.domain.GetSuperHeroUseCase
 import edu.unaigomdie.superhero2024.feature.domain.GetSuperHeroesUseCase
+import edu.unaigomdie.superhero2024.feature.domain.SetSuperHeroUseCase
 import edu.unaigomdie.superhero2024.feature.domain.SuperHero
 
 class SuperHeroViewModel(private val getSuperHeroesUseCase: GetSuperHeroesUseCase,
-    private val getSuperHeroUseCase: GetSuperHeroUseCase
+    private val getSuperHeroUseCase: GetSuperHeroUseCase,
+    private val setSuperHeroUseCase: SetSuperHeroUseCase
 ):
 ViewModel(){
     suspend fun getSuperHeroes(): List<SuperHero>{
@@ -22,4 +24,9 @@ ViewModel(){
 
         return superHero
     }
+
+    suspend fun setSuperHero(superHero: SuperHero){
+        setSuperHeroUseCase.invoke(superHero)
+    }
+
 }

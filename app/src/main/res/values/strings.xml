@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SuperHero2024</string>
+    <string name="superhero_name_file_xml">SuperHero</string>
 </resources>
