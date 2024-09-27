@@ -49,8 +49,7 @@ class SuperHeroXmlLocalDataSource(context: Context) {
     }
 
     fun deleteSuperHeroes() {
-        sharedPref.edit().remove("superheroes").apply()
-
+        sharedPref.edit().clear().apply()
     }
 
 
