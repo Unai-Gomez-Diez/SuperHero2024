@@ -1,7 +1,6 @@
 package edu.unaigomdie.superhero2024.feature.data.local
 
 import android.content.Context
-import android.provider.Settings.Global.getString
 import com.google.gson.Gson
 import edu.unaigomdie.superhero2024.R
 import edu.unaigomdie.superhero2024.feature.domain.SuperHero
@@ -24,17 +23,37 @@ class SuperHeroXmlLocalDataSource(context: Context) {
        return gson.fromJson(superHeroGson, SuperHero::class.java)
 
     }
+    fun deleteSuperHero() {
+        sharedPref.edit().remove("superhero").apply()
+    }
+
 
     fun saveSuperHeroes(superHeroes: List<SuperHero>){
         val editor = sharedPref.edit()
-        val superHeroesGson = gson.toJson(superHeroes)
-        editor.putString("superheroes", superHeroesGson)
+        superHeroes.forEach { superHero ->
+            editor.putString(superHero.id.toString(), gson.toJson(superHero))
+        }
         editor.apply()
     }
-    fun getSuperHeroes(): List<SuperHero>? {
-        val superHeroesGson = sharedPref.getString("superheroes", null)
-        return gson.fromJson(superHeroesGson, Array<SuperHero>::class.java)?.toList()
+
+
+    fun getSuperHeroes(): List<SuperHero> {
+        val superHeroes = mutableListOf<SuperHero>()
+        val mapSuperHeroes = sharedPref.all as Map<String, String>
+        mapSuperHeroes.values.forEach { jsonSuperHero ->
+            val superHero = gson.fromJson(jsonSuperHero, SuperHero::class.java)
+            superHeroes.add(superHero)
+        }
+        return superHeroes
+
     }
+
+    fun deleteSuperHeroes() {
+        sharedPref.edit().remove("superheroes").apply()
+
+    }
+
+
 
 
 

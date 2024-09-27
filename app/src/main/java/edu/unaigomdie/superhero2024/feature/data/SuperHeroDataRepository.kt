@@ -11,24 +11,30 @@ class SuperHeroDataRepository(
 ): SuperHeroRepository {
     override suspend fun getSuperHeroes(): List<SuperHero> {
         val localSuperHeroes = localDataSource.getSuperHeroes()
-        if (localSuperHeroes == null){
+        return if (localSuperHeroes.isEmpty()) {
             val remoteSuperHeroes = remoteDataSource.getSuperHeroes()
+            localDataSource.deleteSuperHeroes()
             localDataSource.saveSuperHeroes(remoteSuperHeroes)
-            return remoteSuperHeroes
+            remoteSuperHeroes
+        } else {
+            localSuperHeroes
         }
-        return localSuperHeroes
+
     }
 
     override suspend fun getSuperHero(id: String): SuperHero? {
         val localSuperHero = localDataSource.getSuperHero()
-        if (localSuperHero == null || localSuperHero.id.toString() != id) {
+        return if (localSuperHero == null || localSuperHero.id.toString() != id) {
+            localDataSource.deleteSuperHero()
             val remoteSuperHero = remoteDataSource.getSuperHero(id)
             remoteSuperHero?.let {
                 localDataSource.saveSuperHero(it)
             }
-            return remoteSuperHero
+            remoteSuperHero
+        } else {
+            localSuperHero
         }
-        return localSuperHero
+
     }
 
     override suspend fun saveSuperHero(superHero: SuperHero) {

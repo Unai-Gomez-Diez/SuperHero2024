@@ -19,9 +19,6 @@ ViewModel(){
         var superHero: SuperHero? = null
 
         superHero = getSuperHeroUseCase.invoke(id)
-
-
-
         return superHero
     }
 

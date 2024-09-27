@@ -40,18 +40,22 @@ android {
 
 dependencies {
 
+    //librerias para la app
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation (libs.retrofit)
+    implementation(libs.gson.serializer)
     implementation(libs.converter.gson)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.logging.interceptor)
     implementation(libs.glide)
 
+    //librerias para el testing
     testImplementation(libs.junit)
+    //librerias android testing
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
