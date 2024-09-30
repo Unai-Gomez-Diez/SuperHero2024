@@ -52,6 +52,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.logging.interceptor)
     implementation(libs.glide)
+    implementation(libs.androidx.cardview)
 
     //librerias para el testing
     testImplementation(libs.junit)

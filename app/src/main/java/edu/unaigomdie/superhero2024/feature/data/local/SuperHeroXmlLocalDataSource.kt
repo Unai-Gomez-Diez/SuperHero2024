@@ -23,10 +23,6 @@ class SuperHeroXmlLocalDataSource(context: Context) {
        return gson.fromJson(superHeroGson, SuperHero::class.java)
 
     }
-    fun deleteSuperHero() {
-        sharedPref.edit().remove("superhero").apply()
-    }
-
 
     fun saveSuperHeroes(superHeroes: List<SuperHero>){
         val editor = sharedPref.edit()
@@ -36,7 +32,6 @@ class SuperHeroXmlLocalDataSource(context: Context) {
         editor.apply()
     }
 
-
     fun getSuperHeroes(): List<SuperHero> {
         val superHeroes = mutableListOf<SuperHero>()
         val mapSuperHeroes = sharedPref.all as Map<String, String>
@@ -45,16 +40,10 @@ class SuperHeroXmlLocalDataSource(context: Context) {
             superHeroes.add(superHero)
         }
         return superHeroes
-
     }
 
     fun deleteSuperHeroes() {
         sharedPref.edit().clear().apply()
     }
-
-
-
-
-
 
 }

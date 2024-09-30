@@ -25,7 +25,7 @@ class SuperHeroDataRepository(
     override suspend fun getSuperHero(id: String): SuperHero? {
         val localSuperHero = localDataSource.getSuperHero()
         return if (localSuperHero == null || localSuperHero.id.toString() != id) {
-            localDataSource.deleteSuperHero()
+            localDataSource.deleteSuperHeroes()
             val remoteSuperHero = remoteDataSource.getSuperHero(id)
             remoteSuperHero?.let {
                 localDataSource.saveSuperHero(it)
