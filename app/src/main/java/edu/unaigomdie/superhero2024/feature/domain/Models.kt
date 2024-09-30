@@ -1,6 +1,6 @@
 package edu.unaigomdie.superhero2024.feature.domain
 
-data class SuperHero (
+data class SuperHero(
     val id: Int,
     val name: String,
     val slug: String?,
@@ -41,7 +41,7 @@ data class Appearance(
 
 data class Work(
     val occupation: String,
-    val base:String
+    val base: String
 )
 
 data class Images(

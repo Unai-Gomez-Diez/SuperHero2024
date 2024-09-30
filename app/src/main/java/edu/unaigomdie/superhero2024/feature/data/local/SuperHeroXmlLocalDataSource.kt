@@ -8,23 +8,24 @@ import edu.unaigomdie.superhero2024.feature.domain.SuperHero
 class SuperHeroXmlLocalDataSource(context: Context) {
 
     private val sharedPref = context.getSharedPreferences(
-        context.getString(R.string.superhero_name_file_xml), Context.MODE_PRIVATE)
+        context.getString(R.string.superhero_name_file_xml), Context.MODE_PRIVATE
+    )
     private val gson = Gson()
 
-    fun saveSuperHero(superHero: SuperHero){
+    fun saveSuperHero(superHero: SuperHero) {
         val editor = sharedPref.edit()
         val superHeroGson = gson.toJson(superHero)
-        editor.putString("superhero", superHeroGson)
+        editor.putString(superHero.id.toString(), superHeroGson)
         editor.apply()
     }
 
-    fun getSuperHero(): SuperHero? {
-        val superHeroGson = sharedPref.getString("superhero", null)
-       return gson.fromJson(superHeroGson, SuperHero::class.java)
-
+    fun getById(superHeroId: String): SuperHero? {
+        return sharedPref.getString(superHeroId, null)?.let {
+            gson.fromJson(it, SuperHero::class.java)
+        }
     }
 
-    fun saveSuperHeroes(superHeroes: List<SuperHero>){
+    fun saveSuperHeroes(superHeroes: List<SuperHero>) {
         val editor = sharedPref.edit()
         superHeroes.forEach { superHero ->
             editor.putString(superHero.id.toString(), gson.toJson(superHero))
@@ -45,5 +46,10 @@ class SuperHeroXmlLocalDataSource(context: Context) {
     fun deleteSuperHeroes() {
         sharedPref.edit().clear().apply()
     }
+
+    fun deleteSuperHero(superHeroId: String) {
+        sharedPref.edit().remove(superHeroId).apply()
+    }
+
 
 }

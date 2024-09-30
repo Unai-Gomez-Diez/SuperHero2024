@@ -20,8 +20,6 @@ class SuperHeroActivity : AppCompatActivity() {
     private val binding get() = _binding!!
     private val adapter = SuperHeroAdapter()
 
-    //private var superHeroFactory = SuperHeroFactory(this)
-    //private val viewModel = superHeroFactory.buildViewModel()
 
     private lateinit var superHeroFactory: SuperHeroFactory
     private lateinit var viewModel: SuperHeroViewModel

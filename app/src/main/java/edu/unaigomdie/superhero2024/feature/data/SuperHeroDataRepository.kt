@@ -8,7 +8,7 @@ import edu.unaigomdie.superhero2024.feature.domain.SuperHeroRepository
 class SuperHeroDataRepository(
     private val remoteDataSource: SuperHeroRemoteDataSource,
     private val localDataSource: SuperHeroXmlLocalDataSource
-): SuperHeroRepository {
+) : SuperHeroRepository {
     override suspend fun getSuperHeroes(): List<SuperHero> {
         val localSuperHeroes = localDataSource.getSuperHeroes()
         return if (localSuperHeroes.isEmpty()) {
@@ -23,7 +23,7 @@ class SuperHeroDataRepository(
     }
 
     override suspend fun getSuperHero(id: String): SuperHero? {
-        val localSuperHero = localDataSource.getSuperHero()
+        val localSuperHero = localDataSource.getById(id)
         return if (localSuperHero == null || localSuperHero.id.toString() != id) {
             localDataSource.deleteSuperHeroes()
             val remoteSuperHero = remoteDataSource.getSuperHero(id)
