@@ -22,9 +22,14 @@ class SuperHeroesFactory(context: Context) {
 
     fun buildViewModel(): SuperHeroesViewModel {
         return SuperHeroesViewModel(
-            getSuperHeroesUseCase,
+            getSuperHeroesUseCase
+
+        )
+    }
+
+    fun buildViewModelDetail(): SuperHeroDetailViewModel {
+        return SuperHeroDetailViewModel(
             getSuperHeroUseCase,
-            setSuperHeroUseCase
         )
     }
 }

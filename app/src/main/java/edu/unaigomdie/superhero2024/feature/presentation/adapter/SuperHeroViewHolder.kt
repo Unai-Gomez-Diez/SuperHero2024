@@ -9,12 +9,15 @@ import edu.unaigomdie.superhero2024.feature.domain.SuperHero
 class SuperHeroViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
     val itemSuperHero = ItemSuperheroBinding.bind(view)
 
-    fun bind(superHero: SuperHero) {
+    fun bind(superHero: SuperHero, onClick: (String) -> Unit) {
         itemSuperHero.apply {
             Glide.with(view.context).load(superHero.images.sm).into(perfilImage)
             nombre.text = superHero.name
             slug.text = superHero.slug
+            view.setOnClickListener {
+                onClick(superHero.id.toString())
 
+            }
         }
 
     }

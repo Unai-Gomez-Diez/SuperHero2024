@@ -8,6 +8,11 @@ import edu.unaigomdie.superhero2024.feature.domain.SuperHero
 import edu.unaigomdie.superhero2024.feature.presentation.SuperHeroDiffUtil
 
 class SuperHeroAdapter : ListAdapter<SuperHero, SuperHeroViewHolder>(SuperHeroDiffUtil()) {
+    lateinit var onClick: (superHeroId: String) -> Unit
+    fun setEvent(onClick: (String) -> Unit) {
+        this.onClick = onClick
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SuperHeroViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_superhero, parent, false)
@@ -15,6 +20,6 @@ class SuperHeroAdapter : ListAdapter<SuperHero, SuperHeroViewHolder>(SuperHeroDi
     }
 
     override fun onBindViewHolder(holder: SuperHeroViewHolder, position: Int) {
-        holder.bind(currentList[position])
+        holder.bind(currentList[position], onClick)
     }
 }
