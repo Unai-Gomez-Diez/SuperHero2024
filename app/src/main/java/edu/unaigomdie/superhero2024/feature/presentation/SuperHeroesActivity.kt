@@ -15,21 +15,21 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
-class SuperHeroActivity : AppCompatActivity() {
+class SuperHeroesActivity : AppCompatActivity() {
     private var _binding: FragmentSuperHeroBinding? = null
     private val binding get() = _binding!!
     private val adapter = SuperHeroAdapter()
 
 
-    private lateinit var superHeroFactory: SuperHeroFactory
-    private lateinit var viewModel: SuperHeroViewModel
+    private lateinit var superHeroesFactory: SuperHeroesFactory
+    private lateinit var viewModel: SuperHeroesViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = FragmentSuperHeroBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        superHeroFactory = SuperHeroFactory(this)
-        viewModel = superHeroFactory.buildViewModel()
+        superHeroesFactory = SuperHeroesFactory(this)
+        viewModel = superHeroesFactory.buildViewModel()
 
 
         setupView()
@@ -53,12 +53,12 @@ class SuperHeroActivity : AppCompatActivity() {
         binding.apply {
             list.apply {
                 layoutManager = GridLayoutManager(
-                    this@SuperHeroActivity,
+                    this@SuperHeroesActivity,
                     1,
                     LinearLayoutManager.VERTICAL,
                     false
                 )
-                adapter = this@SuperHeroActivity.adapter
+                adapter = this@SuperHeroesActivity.adapter
             }
         }
     }

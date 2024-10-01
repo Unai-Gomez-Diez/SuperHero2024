@@ -19,7 +19,6 @@ data class PowerStats(
     val power: Int,
     val combat: Int
 )
-
 data class Biography(
     val fullName: String,
     val alterEgos: String,

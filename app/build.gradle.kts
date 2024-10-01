@@ -50,7 +50,7 @@ dependencies {
     implementation(libs.gson.serializer)
     implementation(libs.converter.gson)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation(libs.logging.interceptor)
+    //implementation(libs.logging.interceptor)
     implementation(libs.glide)
     implementation(libs.androidx.cardview)
 

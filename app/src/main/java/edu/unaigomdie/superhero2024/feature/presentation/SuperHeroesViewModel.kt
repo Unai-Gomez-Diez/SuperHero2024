@@ -6,7 +6,7 @@ import edu.unaigomdie.superhero2024.feature.domain.GetSuperHeroesUseCase
 import edu.unaigomdie.superhero2024.feature.domain.SetSuperHeroUseCase
 import edu.unaigomdie.superhero2024.feature.domain.SuperHero
 
-class SuperHeroViewModel(
+class SuperHeroesViewModel(
     private val getSuperHeroesUseCase: GetSuperHeroesUseCase,
     private val getSuperHeroUseCase: GetSuperHeroUseCase,
     private val setSuperHeroUseCase: SetSuperHeroUseCase
