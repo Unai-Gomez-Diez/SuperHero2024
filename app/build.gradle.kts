@@ -53,6 +53,8 @@ dependencies {
     //implementation(libs.logging.interceptor)
     implementation(libs.glide)
     implementation(libs.androidx.cardview)
+    implementation(libs.coil)
+
 
     //librerias para el testing
     testImplementation(libs.junit)
