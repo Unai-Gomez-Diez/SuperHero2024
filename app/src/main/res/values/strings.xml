@@ -15,4 +15,6 @@
     <string name="fecha_de_nacimiento">Fecha de nacimiento</string>
     <string name="nombre_completo">nombre completo</string>
     <string name="alter_egos">alter egos</string>
+    <string name="name">Nombre:</string>
+    <string name="slug">Slug:</string>
 </resources>

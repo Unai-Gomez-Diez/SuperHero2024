@@ -24,28 +24,45 @@
             tools:src="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/nombre"
+            android:id="@+id/text_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="@id/image"
             app:layout_constraintTop_toBottomOf="@id/image"
-            tools:text="Unai" />
+            android:text="@string/name"
+            />
+        <TextView
+            android:id="@+id/nombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/text_name"
+            app:layout_constraintTop_toBottomOf="@id/image"
+            tools:text="Unai"
+            android:layout_marginLeft="20dp"/>
 
+        <TextView
+            android:id="@+id/text_slug"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/text_name"
+            app:layout_constraintStart_toStartOf="@id/image"
+            android:text="@string/slug"/>
         <TextView
             android:id="@+id/slug"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/nombre"
-            app:layout_constraintTop_toBottomOf="@id/nombre"
-            tools:text="Gómez" />
+            app:layout_constraintStart_toEndOf="@id/text_slug"
+            app:layout_constraintTop_toTopOf="@id/text_slug"
+            tools:text="Gómez"
+            android:layout_marginLeft="20dp"/>
 
         <TextView
             android:id="@+id/power_stats"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/slug"
+            app:layout_constraintStart_toStartOf="@id/text_slug"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/slug"
+            app:layout_constraintTop_toBottomOf="@id/text_slug"
             android:text="@string/estadisticas_de_poder" />
 
         <androidx.cardview.widget.CardView
@@ -166,7 +183,7 @@
             android:id="@+id/work"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@id/slug"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/table_stats"
             android:text="@string/trabajo" />
@@ -187,6 +204,7 @@
                 android:layout_margin="5dp">
 
                 <TextView
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
