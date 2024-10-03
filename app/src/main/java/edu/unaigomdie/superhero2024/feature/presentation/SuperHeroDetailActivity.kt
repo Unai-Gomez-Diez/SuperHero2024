@@ -21,13 +21,23 @@ class SuperHeroDetailActivity : AppCompatActivity() {
 
         superHeroesFactory = SuperHeroesFactory(this)
         viewModel = superHeroesFactory.buildViewModelDetail()
-        getSuperHeroId()?.let {
-            runBlocking {
-                viewModel.viewCreated(it)?.let { superhero ->
-                    bindData(superhero)
-                }
-            }
 
+        getSuperHeroId()?.let {
+            viewModel.viewCreated(it)
+            setupObservers()
+
+        }
+    }
+
+
+
+    private fun getSuperHeroId(): String? {
+        return intent.getStringExtra(KEY_SUPER_HERO_ID)
+    }
+
+    private fun setupObservers() {
+        viewModel.uiState.observe(this) {
+            bindData(it.superHero!!)
         }
     }
 
@@ -47,12 +57,6 @@ class SuperHeroDetailActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.alter_ego).text = superhero.biography.alterEgos
         findViewById<TextView>(R.id.full_name).text = superhero.biography.fullName
         findViewById<TextView>(R.id.place_of_birth).text = superhero.biography.placeOfBirth
-
-
-    }
-
-    private fun getSuperHeroId(): String? {
-        return intent.getStringExtra(KEY_SUPER_HERO_ID)
     }
 
     companion object {
