@@ -19,7 +19,7 @@ class SuperHeroesViewModel(
 
     suspend fun getSuperHeroes() {
         GlobalScope.launch(Dispatchers.IO){
-            UiState(superHeroes = getSuperHeroesUseCase.invoke())
+            _uistate.postValue(UiState(getSuperHeroesUseCase()))
         }
 
 
