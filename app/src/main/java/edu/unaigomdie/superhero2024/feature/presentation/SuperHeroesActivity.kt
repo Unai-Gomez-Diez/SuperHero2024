@@ -20,25 +20,15 @@ class SuperHeroesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = FragmentSuperHeroBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
+
         superHeroesFactory = SuperHeroesFactory(this)
         viewModel = superHeroesFactory.buildViewModel()
 
-
+        viewModel.getSuperHeroes()
+        setupObservers()
         setupView()
-
-        runBlocking {
-            val superHeros = viewModel.getSuperHeroes()
-            superheroAdapter.submitList(superHeros)
-            binding.list.adapter = superheroAdapter
-            //val superHero1 = viewModel.getSuperHero("3")
-            //viewModel.setSuperHero(superHero1!!)
-
-            // Log.d("@dev", superHeros.toString())
-
-            //bindData(superHeros)
-        }
-
 
     }
 
@@ -59,6 +49,12 @@ class SuperHeroesActivity : AppCompatActivity() {
 
 
             }
+        }
+    }
+
+    private fun setupObservers() {
+        viewModel.uiState.observe(this) {
+            superheroAdapter.submitList(it.superHeroes)
         }
     }
 
