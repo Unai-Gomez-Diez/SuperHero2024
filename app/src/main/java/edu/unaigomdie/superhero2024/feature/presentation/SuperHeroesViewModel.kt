@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import edu.unaigomdie.superhero2024.app.domain.ErrorApp
 import edu.unaigomdie.superhero2024.feature.domain.GetSuperHeroesUseCase
 import edu.unaigomdie.superhero2024.feature.domain.SuperHero
 import kotlinx.coroutines.Dispatchers
@@ -20,11 +21,14 @@ class SuperHeroesViewModel(
 
     fun getSuperHeroes() {
         viewModelScope.launch(Dispatchers.IO){
-            _uistate.postValue(UiState(getSuperHeroesUseCase()))
+            val superHeroes = getSuperHeroesUseCase()
+            _uistate.postValue(UiState(superHeroes = superHeroes))
         }
     }
 
     data class UiState(
+        val isLoading: Boolean = false,
+        val errorApp: ErrorApp? = null,
         val superHeroes: List<SuperHero> = emptyList()
     )
 

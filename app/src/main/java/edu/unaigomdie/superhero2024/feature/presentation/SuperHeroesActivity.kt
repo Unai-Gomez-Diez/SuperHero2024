@@ -2,6 +2,7 @@ package edu.unaigomdie.superhero2024.feature.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import edu.unaigomdie.superhero2024.databinding.FragmentSuperHeroBinding
@@ -30,6 +31,8 @@ class SuperHeroesActivity : AppCompatActivity() {
         setupObservers()
         setupView()
 
+
+
     }
 
     private fun setupView() {
@@ -54,7 +57,20 @@ class SuperHeroesActivity : AppCompatActivity() {
 
     private fun setupObservers() {
         viewModel.uiState.observe(this) {
+
             superheroAdapter.submitList(it.superHeroes)
+        }
+        val superheroObserver = Observer<SuperHeroesViewModel.UiState> { uiState ->
+            uiState.superHeroes.let {
+                superheroAdapter.submitList(it)
+            }
+            uiState.isLoading.let {
+
+            }
+            uiState.errorApp.let {
+
+            }
+
         }
     }
 

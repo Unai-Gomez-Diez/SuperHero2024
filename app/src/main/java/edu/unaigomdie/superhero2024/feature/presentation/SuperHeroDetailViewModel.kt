@@ -19,12 +19,15 @@ class SuperHeroDetailViewModel(
 
     fun viewCreated(id: String){
         viewModelScope.launch(Dispatchers.IO){
-            _uistate.postValue(UiState(getSuperHeroUseCase(id)))
+            val superHero = getSuperHeroUseCase(id)
+            _uistate.postValue(UiState(superHero = superHero))
         }
 
     }
 
     data class UiState(
+        val isLoading: Boolean = false,
+        //val errorApp: ErrorApp? = null,
         val superHero: SuperHero? = null
     )
 
