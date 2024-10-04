@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import edu.unaigomdie.superhero2024.app.domain.ErrorApp
 import edu.unaigomdie.superhero2024.databinding.FragmentSuperHeroBinding
 import edu.unaigomdie.superhero2024.feature.presentation.adapter.SuperHeroAdapter
 import kotlinx.coroutines.runBlocking
@@ -67,10 +68,19 @@ class SuperHeroesActivity : AppCompatActivity() {
             uiState.isLoading.let {
 
             }
-            uiState.errorApp.let {
-
+            uiState.errorApp?.let {
+                showError(it)
             }
 
+        }
+    }
+
+    private fun showError(error: ErrorApp) {
+        when(error){
+            ErrorApp.DataErrorApp -> TODO()
+            ErrorApp.InternetErrorApp -> TODO()
+            ErrorApp.ServerErrorApp -> TODO()
+            ErrorApp.UnknownErrorApp -> TODO()
         }
     }
 

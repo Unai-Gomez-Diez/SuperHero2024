@@ -20,6 +20,7 @@ class SuperHeroesViewModel(
     val uiState: LiveData<UiState> = _uistate
 
     fun getSuperHeroes() {
+        _uistate.value = UiState(isLoading = true)
         viewModelScope.launch(Dispatchers.IO){
             val superHeroes = getSuperHeroesUseCase()
             _uistate.postValue(UiState(superHeroes = superHeroes))
