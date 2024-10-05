@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import edu.unaigomdie.superhero2024.R
 import edu.unaigomdie.superhero2024.app.domain.ErrorApp
 import edu.unaigomdie.superhero2024.databinding.FragmentSuperHeroBinding
 import edu.unaigomdie.superhero2024.feature.presentation.adapter.SuperHeroAdapter
@@ -58,27 +59,23 @@ class SuperHeroesActivity : AppCompatActivity() {
 
     private fun setupObservers() {
         viewModel.uiState.observe(this) {
-
-            superheroAdapter.submitList(it.superHeroes)
-        }
-        val superheroObserver = Observer<SuperHeroesViewModel.UiState> { uiState ->
-            uiState.superHeroes.let {
+            uistate ->
+            uistate.superHeroes.let {
                 superheroAdapter.submitList(it)
             }
-            uiState.isLoading.let {
-
+            uistate.isLoading.let {
+                //progressBar.isVisible = it
             }
-            uiState.errorApp?.let {
+            uistate.errorApp?.let {
                 showError(it)
             }
-
         }
     }
 
     private fun showError(error: ErrorApp) {
         when(error){
             ErrorApp.DataErrorApp -> TODO()
-            ErrorApp.InternetErrorApp -> TODO()
+            ErrorApp.InternetErrorApp -> setContentView(R.layout.internet_error_activity)
             ErrorApp.ServerErrorApp -> TODO()
             ErrorApp.UnknownErrorApp -> TODO()
         }

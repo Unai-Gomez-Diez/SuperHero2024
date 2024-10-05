@@ -17,4 +17,7 @@
     <string name="alter_egos">alter egos</string>
     <string name="name">Nombre:</string>
     <string name="slug">Slug:</string>
+
+
+    <string name="internet_error_activity_title">ERROR DE INTERNET</string>"
 </resources>

@@ -2,8 +2,6 @@ package edu.unaigomdie.superhero2024.feature.presentation.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
-import com.bumptech.glide.Glide
 import edu.unaigomdie.superhero2024.app.extension.loadImage
 import edu.unaigomdie.superhero2024.databinding.ItemSuperheroBinding
 import edu.unaigomdie.superhero2024.feature.domain.SuperHero
