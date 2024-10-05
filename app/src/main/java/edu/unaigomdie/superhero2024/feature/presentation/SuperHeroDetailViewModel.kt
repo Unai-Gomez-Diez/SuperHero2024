@@ -21,8 +21,8 @@ class SuperHeroDetailViewModel(
     fun viewCreated(id: String){
         viewModelScope.launch(Dispatchers.IO){
             val superHero = getSuperHeroUseCase(id)
-            //_uistate.postValue(UiState(superHero = superHero))
-            _uistate.postValue(UiState(errorApp = ErrorApp.InternetErrorApp))
+            _uistate.postValue(UiState(superHero = superHero))
+            //_uistate.postValue(UiState(errorApp = ErrorApp.InternetErrorApp))
 
         }
 
