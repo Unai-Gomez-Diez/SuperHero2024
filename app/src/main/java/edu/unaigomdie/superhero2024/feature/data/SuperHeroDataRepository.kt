@@ -19,7 +19,6 @@ class SuperHeroDataRepository(
         } else {
             localSuperHeroes
         }
-
     }
 
     override suspend fun getSuperHero(id: String): SuperHero? {
@@ -35,9 +34,5 @@ class SuperHeroDataRepository(
             localSuperHero
         }
 
-    }
-
-    override suspend fun saveSuperHero(superHero: SuperHero) {
-        localDataSource.saveSuperHero(superHero)
     }
 }

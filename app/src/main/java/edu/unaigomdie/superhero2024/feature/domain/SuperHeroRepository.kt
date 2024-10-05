@@ -5,6 +5,6 @@ interface SuperHeroRepository {
 
     suspend fun getSuperHero(id: String): SuperHero?
 
-    suspend fun saveSuperHero(superHero: SuperHero)
+
 
 }

@@ -2,7 +2,6 @@ package edu.unaigomdie.superhero2024.feature.data.remote
 
 
 import edu.unaigomdie.superhero2024.app.api.ApiClient
-import edu.unaigomdie.superhero2024.app.api.ApiService
 import edu.unaigomdie.superhero2024.feature.domain.SuperHero
 
 class SuperHeroRemoteDataSource {

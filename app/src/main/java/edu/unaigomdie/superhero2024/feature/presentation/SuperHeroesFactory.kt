@@ -7,7 +7,6 @@ import edu.unaigomdie.superhero2024.feature.data.local.SuperHeroXmlLocalDataSour
 import edu.unaigomdie.superhero2024.feature.data.remote.SuperHeroRemoteDataSource
 import edu.unaigomdie.superhero2024.feature.domain.GetSuperHeroUseCase
 import edu.unaigomdie.superhero2024.feature.domain.GetSuperHeroesUseCase
-import edu.unaigomdie.superhero2024.feature.domain.SetSuperHeroUseCase
 
 class SuperHeroesFactory(context: Context) {
     private val superHeroRemoteDataSource = SuperHeroRemoteDataSource()
@@ -18,7 +17,7 @@ class SuperHeroesFactory(context: Context) {
     )
     private val getSuperHeroUseCase = GetSuperHeroUseCase(superHeroDataRepository)
     private val getSuperHeroesUseCase = GetSuperHeroesUseCase(superHeroDataRepository)
-    private val setSuperHeroUseCase = SetSuperHeroUseCase(superHeroDataRepository)
+
 
     fun buildViewModel(): SuperHeroesViewModel {
         return SuperHeroesViewModel(
