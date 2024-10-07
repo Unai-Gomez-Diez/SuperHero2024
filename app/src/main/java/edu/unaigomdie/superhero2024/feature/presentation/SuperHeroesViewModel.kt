@@ -32,7 +32,4 @@ class SuperHeroesViewModel(
         val errorApp: ErrorApp? = null,
         val superHeroes: List<SuperHero> = emptyList()
     )
-
-
-
 }
