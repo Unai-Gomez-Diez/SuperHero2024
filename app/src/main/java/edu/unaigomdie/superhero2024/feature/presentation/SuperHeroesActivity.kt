@@ -1,10 +1,16 @@
 package edu.unaigomdie.superhero2024.feature.presentation
 
 import android.os.Bundle
+import android.view.View
+import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.faltenreich.skeletonlayout.Skeleton
+import com.faltenreich.skeletonlayout.SkeletonLayout
+import com.faltenreich.skeletonlayout.applySkeleton
 import edu.unaigomdie.superhero2024.R
 import edu.unaigomdie.superhero2024.app.domain.ErrorApp
 import edu.unaigomdie.superhero2024.databinding.FragmentSuperHeroBinding
@@ -19,6 +25,9 @@ class SuperHeroesActivity : AppCompatActivity() {
 
     private lateinit var superHeroesFactory: SuperHeroesFactory
     private lateinit var viewModel: SuperHeroesViewModel
+    private val skeleton: Skeleton by lazy {
+        binding.list.applySkeleton(R.layout.item_superhero,15)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,18 +67,22 @@ class SuperHeroesActivity : AppCompatActivity() {
     }
 
     private fun setupObservers() {
-        viewModel.uiState.observe(this) {
-            uistate ->
-            uistate.superHeroes.let {
-                superheroAdapter.submitList(it)
-            }
-            uistate.isLoading.let {
-                //progressBar.isVisible = it
-            }
-            uistate.errorApp?.let {
-                showError(it)
+
+        val observer = Observer<SuperHeroesViewModel.UiState> {
+            if (it.isLoading) {
+                skeleton.showSkeleton()
+            } else {
+                skeleton.showOriginal()
+                if (it.errorApp != null) {
+                    showError(it.errorApp)
+                }else{
+                    superheroAdapter.submitList(it.superHeroes)
+                }
             }
         }
+        viewModel.uiState.observe(this, observer)
+
+
     }
 
     private fun showError(error: ErrorApp) {

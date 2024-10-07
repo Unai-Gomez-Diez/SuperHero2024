@@ -9,6 +9,7 @@ import edu.unaigomdie.superhero2024.feature.domain.GetSuperHeroesUseCase
 import edu.unaigomdie.superhero2024.feature.domain.SuperHero
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class SuperHeroesViewModel(
@@ -22,6 +23,7 @@ class SuperHeroesViewModel(
     fun getSuperHeroes() {
         _uistate.value = UiState(isLoading = true)
         viewModelScope.launch(Dispatchers.IO){
+            delay(2000)
             val superHeroes = getSuperHeroesUseCase()
             _uistate.postValue(UiState(superHeroes = superHeroes))
         }

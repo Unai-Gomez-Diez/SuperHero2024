@@ -54,6 +54,7 @@ dependencies {
     implementation(libs.glide)
     implementation(libs.androidx.cardview)
     implementation(libs.coil)
+    implementation (libs.com.faltenreich.skeletonlayout)
 
 
     //librerias para el testing

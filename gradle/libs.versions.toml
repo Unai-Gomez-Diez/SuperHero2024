@@ -2,6 +2,7 @@
 agp = "8.6.0"
 cardview = "1.0.0"
 coilCompose = "2.7.0"
+faltenreichSkeletonlayout = "5.0.0"
 glide = "4.16.0"
 kotlin = "1.9.0"
 coreKtx = "1.13.1"
@@ -23,6 +24,7 @@ androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = 
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
 coil = { module = "io.coil-kt:coil", version.ref = "coilCompose" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
+com-faltenreich-skeletonlayout = { module = "com.faltenreich:skeletonlayout", version.ref = "faltenreichSkeletonlayout" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
