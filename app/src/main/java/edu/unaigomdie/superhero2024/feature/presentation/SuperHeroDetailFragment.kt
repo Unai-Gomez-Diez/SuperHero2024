@@ -49,10 +49,6 @@ class SuperHeroDetailFragment: Fragment() {
 
     }
 
-
-
-
-
     private fun setupObservers() {
         viewModel.uiState.observe(viewLifecycleOwner) {
                 uistate ->
@@ -60,7 +56,7 @@ class SuperHeroDetailFragment: Fragment() {
                 bindData(it)
             }
             uistate.isLoading.let {
-                //progressBar.isVisible = it
+
             }
             uistate.errorApp?.let {
                 showError(it)

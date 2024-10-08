@@ -88,8 +88,6 @@ class SuperHeroesFragment: Fragment() {
 
     private fun navigateToDetail(superHeroId: String) {
         findNavController().currentBackStackEntry?.savedStateHandle?.set("superHeroId", superHeroId)
-
-
         findNavController().navigate(R.id.action_superheroes_fragment_to_superheroes_detail_fragment)
     }
 
