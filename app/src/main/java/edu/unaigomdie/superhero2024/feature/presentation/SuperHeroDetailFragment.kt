@@ -4,12 +4,15 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import edu.unaigomdie.superhero2024.R
 import edu.unaigomdie.superhero2024.app.domain.ErrorApp
 import edu.unaigomdie.superhero2024.app.extension.loadImage
@@ -31,24 +34,27 @@ class SuperHeroDetailFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentSuperHeroDetailBinding.inflate(inflater, container, false)
-        return super.onCreateView(inflater, container, savedInstanceState)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         superHeroesFactory = SuperHeroesFactory(requireContext())
         viewModel = superHeroesFactory.buildViewModelDetail()
+        setupObservers()
+        findNavController().previousBackStackEntry?.savedStateHandle?.getLiveData<String>("superHeroId")
+            ?.observe(viewLifecycleOwner) { superHeroId ->
+                viewModel.viewCreated(superHeroId)
+            }
 
     }
 
 
-    private fun getSuperHeroId(): String? {
-        return intent.getStringExtra(KEY_SUPER_HERO_ID)
-    }
+
 
 
     private fun setupObservers() {
-        viewModel.uiState.observe(this) {
+        viewModel.uiState.observe(viewLifecycleOwner) {
                 uistate ->
             uistate.superHero?.let {
                 bindData(it)
@@ -63,6 +69,9 @@ class SuperHeroDetailFragment: Fragment() {
     }
 
     private fun bindData(superhero: SuperHero) {
+        binding.detailToolbar.back.setOnClickListener{
+            Navigation.findNavController(this.requireView()).navigate(R.id.action_superheroes_detail_fragment_to_superheroes_fragment)
+        }
         binding.apply {
             image.loadImage(superhero.images.sm)
             nombre.text = superhero.name
@@ -92,9 +101,11 @@ class SuperHeroDetailFragment: Fragment() {
 
     @SuppressLint("MissingInflatedId")
     private fun setError(){
-        setContentView(R.layout.internet_error_activity)
-        findViewById<TextView>(R.id.text_view).text = getString(R.string.internet_error_activity_title)
-        findViewById<ImageView>(R.id.image_view).setImageResource(R.drawable.ic_internet_error)
+      //  setContentView(R.layout.internet_error_activity)
+        binding.apply {
+            image.setImageResource(R.drawable.ic_internet_error)
+            nombre.text = getString(R.string.internet_error_activity_title)
+        }
     }
 
     companion object {
@@ -102,7 +113,7 @@ class SuperHeroDetailFragment: Fragment() {
 
         fun getIntent(context: Context, superHeroId: String): Intent {
 
-            val intent = Intent(context, SuperHeroDetailActivity::class.java)
+            val intent = Intent(context, SuperHeroDetailFragment::class.java)
             intent.putExtra(KEY_SUPER_HERO_ID, superHeroId)
             return intent
         }

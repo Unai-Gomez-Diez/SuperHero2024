@@ -6,6 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.faltenreich.skeletonlayout.Skeleton
@@ -32,17 +35,18 @@ class SuperHeroesFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentSuperHeroBinding.inflate(inflater, container, false)
-
+        setupView()
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupObservers()
         superHeroesFactory = SuperHeroesFactory(requireContext())
         viewModel = superHeroesFactory.buildViewModel()
+        setupObservers()
+
         viewModel.getSuperHeroes()
-        setupView()
+
     }
 
     private fun setupView() {
@@ -83,7 +87,10 @@ class SuperHeroesFragment: Fragment() {
     }
 
     private fun navigateToDetail(superHeroId: String) {
-        startActivity(SuperHeroDetailActivity.getIntent(requireContext(), superHeroId))
+        findNavController().currentBackStackEntry?.savedStateHandle?.set("superHeroId", superHeroId)
+
+
+        findNavController().navigate(R.id.action_superheroes_fragment_to_superheroes_detail_fragment)
     }
 
     private fun showError(error: ErrorApp) {

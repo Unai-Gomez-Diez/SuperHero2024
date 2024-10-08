@@ -18,7 +18,6 @@ class SuperHeroViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
             slug.text = superHero.slug
             view.setOnClickListener {
                 onClick(superHero.id.toString())
-                //findNavController().navigate(R.id.action_superHeroesFragment_to_superHeroDetailFragment)
             }
         }
 
