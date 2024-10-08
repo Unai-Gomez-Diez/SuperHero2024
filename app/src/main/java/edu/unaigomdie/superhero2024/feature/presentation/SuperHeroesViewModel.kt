@@ -23,7 +23,7 @@ class SuperHeroesViewModel(
     fun getSuperHeroes() {
         _uistate.value = UiState(isLoading = true)
         viewModelScope.launch(Dispatchers.IO){
-            delay(2000)
+            delay(500)
             val superHeroes = getSuperHeroesUseCase()
             _uistate.postValue(UiState(superHeroes = superHeroes))
         }
