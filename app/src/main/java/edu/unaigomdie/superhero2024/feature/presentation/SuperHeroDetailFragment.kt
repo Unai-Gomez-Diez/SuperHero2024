@@ -4,33 +4,42 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import edu.unaigomdie.superhero2024.R
 import edu.unaigomdie.superhero2024.app.domain.ErrorApp
 import edu.unaigomdie.superhero2024.app.extension.loadImage
+import edu.unaigomdie.superhero2024.databinding.FragmentSuperHeroBinding
+import edu.unaigomdie.superhero2024.databinding.FragmentSuperHeroDetailBinding
 import edu.unaigomdie.superhero2024.feature.domain.SuperHero
 
-class SuperHeroDetailActivity : AppCompatActivity() {
+class SuperHeroDetailFragment: Fragment() {
+
+    private var _binding: FragmentSuperHeroDetailBinding? = null
+    private val binding get() = _binding!!
 
     private lateinit var superHeroesFactory: SuperHeroesFactory
     private lateinit var viewModel: SuperHeroDetailViewModel
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_super_hero_detail)
-
-        superHeroesFactory = SuperHeroesFactory(this)
-        viewModel = superHeroesFactory.buildViewModelDetail()
-
-        getSuperHeroId()?.let {
-            viewModel.viewCreated(it)
-            setupObservers()
-
-        }
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentSuperHeroDetailBinding.inflate(inflater, container, false)
+        return super.onCreateView(inflater, container, savedInstanceState)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        superHeroesFactory = SuperHeroesFactory(requireContext())
+        viewModel = superHeroesFactory.buildViewModelDetail()
+
+    }
 
 
     private fun getSuperHeroId(): String? {
@@ -54,23 +63,22 @@ class SuperHeroDetailActivity : AppCompatActivity() {
     }
 
     private fun bindData(superhero: SuperHero) {
-        findViewById<ImageView>(R.id.image).loadImage(superhero.images.sm)
-       // Glide.with(this).load(superhero.images.md).into(findViewById(R.id.image))
-
-        findViewById<TextView>(R.id.nombre).text = superhero.name
-        findViewById<TextView>(R.id.slug).text = superhero.slug
-        findViewById<TextView>(R.id.intelligence).text =
-            superhero.powerstats.intelligence.toString()
-        findViewById<TextView>(R.id.strength).text = superhero.powerstats.strength.toString()
-        findViewById<TextView>(R.id.speed).text = superhero.powerstats.speed.toString()
-        findViewById<TextView>(R.id.durability).text = superhero.powerstats.durability.toString()
-        findViewById<TextView>(R.id.power).text = superhero.powerstats.power.toString()
-        findViewById<TextView>(R.id.combat).text = superhero.powerstats.combat.toString()
-        findViewById<TextView>(R.id.occupation).text = superhero.work.occupation
-        findViewById<TextView>(R.id.base).text = superhero.work.base
-        findViewById<TextView>(R.id.alter_ego).text = superhero.biography.alterEgos
-        findViewById<TextView>(R.id.full_name).text = superhero.biography.fullName
-        findViewById<TextView>(R.id.place_of_birth).text = superhero.biography.placeOfBirth
+        binding.apply {
+            image.loadImage(superhero.images.sm)
+            nombre.text = superhero.name
+            slug.text = superhero.slug
+            intelligence.text = superhero.powerstats.intelligence.toString()
+            strength.text = superhero.powerstats.strength.toString()
+            speed.text = superhero.powerstats.speed.toString()
+            durability.text = superhero.powerstats.durability.toString()
+            power.text = superhero.powerstats.power.toString()
+            combat.text = superhero.powerstats.combat.toString()
+            occupation.text = superhero.work.occupation
+            base.text = superhero.work.base
+            alterEgo.text = superhero.biography.alterEgos
+            fullName.text = superhero.biography.fullName
+            placeOfBirth.text = superhero.biography.placeOfBirth
+        }
     }
 
     private fun showError(error: ErrorApp) {

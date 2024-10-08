@@ -55,6 +55,10 @@ dependencies {
     implementation(libs.androidx.cardview)
     implementation(libs.coil)
     implementation (libs.com.faltenreich.skeletonlayout)
+    implementation (libs.androidx.navigation.fragment)
+    implementation (libs.androidx.navigation.ui)
+    implementation(libs.nav.fragment.ktx)
+
 
 
     //librerias para el testing
