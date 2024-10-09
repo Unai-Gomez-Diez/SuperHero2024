@@ -59,7 +59,7 @@ dependencies {
     implementation (libs.androidx.navigation.fragment)
     implementation (libs.androidx.navigation.ui)
     implementation(libs.nav.fragment.ktx)
-    implementation(libs.androidx.navigation.safe.args.gradle.plugin)
+   // implementation(libs.androidx.navigation.safe.args.gradle.plugin)
 
 
 

@@ -19,7 +19,6 @@ import edu.unaigomdie.superhero2024.app.extension.loadImage
 import edu.unaigomdie.superhero2024.databinding.FragmentSuperHeroBinding
 import edu.unaigomdie.superhero2024.databinding.FragmentSuperHeroDetailBinding
 import edu.unaigomdie.superhero2024.feature.domain.SuperHero
-import missing.namespace.R
 
 class SuperHeroDetailFragment: Fragment() {
 

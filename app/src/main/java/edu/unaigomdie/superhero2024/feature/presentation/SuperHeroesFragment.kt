@@ -46,7 +46,6 @@ class SuperHeroesFragment: Fragment() {
         setupObservers()
 
         viewModel.getSuperHeroes()
-
     }
 
     private fun setupView() {
