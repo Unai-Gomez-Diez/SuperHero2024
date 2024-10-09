@@ -19,6 +19,7 @@ import edu.unaigomdie.superhero2024.app.extension.loadImage
 import edu.unaigomdie.superhero2024.databinding.FragmentSuperHeroBinding
 import edu.unaigomdie.superhero2024.databinding.FragmentSuperHeroDetailBinding
 import edu.unaigomdie.superhero2024.feature.domain.SuperHero
+import missing.namespace.R
 
 class SuperHeroDetailFragment: Fragment() {
 
@@ -42,10 +43,9 @@ class SuperHeroDetailFragment: Fragment() {
         superHeroesFactory = SuperHeroesFactory(requireContext())
         viewModel = superHeroesFactory.buildViewModelDetail()
         setupObservers()
-        findNavController().previousBackStackEntry?.savedStateHandle?.getLiveData<String>("superHeroId")
-            ?.observe(viewLifecycleOwner) { superHeroId ->
-                viewModel.viewCreated(superHeroId)
-            }
+
+        val superHeroId = SuperHeroDetailFragmentArgs.fromBundle(requireArguments()).superHeroId
+        viewModel.viewCreated(superHeroId)
 
     }
 
@@ -104,14 +104,5 @@ class SuperHeroDetailFragment: Fragment() {
         }
     }
 
-    companion object {
-        val KEY_SUPER_HERO_ID = "key_super_hero_id"
 
-        fun getIntent(context: Context, superHeroId: String): Intent {
-
-            val intent = Intent(context, SuperHeroDetailFragment::class.java)
-            intent.putExtra(KEY_SUPER_HERO_ID, superHeroId)
-            return intent
-        }
-    }
 }
