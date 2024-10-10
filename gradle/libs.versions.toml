@@ -1,5 +1,5 @@
 [versions]
-agp = "8.6.0"
+agp = "8.6.1"
 cardview = "1.0.0"
 coilCompose = "2.7.0"
 faltenreichSkeletonlayout = "5.0.0"
@@ -15,13 +15,18 @@ loggingInterceptor = "4.11.0"
 material = "1.12.0"
 activity = "1.9.2"
 constraintlayout = "2.1.4"
+navigationFragment = "2.8.2"
 retrofit = "2.9.0"
 gson = "2.11.0"
+nav_version="2.8.2"
 
 [libraries]
 androidx-cardview = { module = "androidx.cardview:cardview", version.ref = "cardview" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
+androidx-navigation-fragment = { module = "androidx.navigation:navigation-fragment", version.ref = "navigationFragment" }
+androidx-navigation-safe-args-gradle-plugin = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigationFragment" }
+androidx-navigation-ui = { module = "androidx.navigation:navigation-ui", version.ref = "navigationFragment" }
 coil = { module = "io.coil-kt:coil", version.ref = "coilCompose" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 com-faltenreich-skeletonlayout = { module = "com.faltenreich:skeletonlayout", version.ref = "faltenreichSkeletonlayout" }
@@ -37,8 +42,10 @@ androidx-activity = { group = "androidx.activity", name = "activity", version.re
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 gson-serializer = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+nav-fragment-ktx = {group="androidx.navigation", name="navigation-fragment-ktx", version.ref="nav_version"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+androidx-navigation-safeargs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "nav_version" }
 

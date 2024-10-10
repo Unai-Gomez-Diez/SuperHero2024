@@ -1,7 +1,9 @@
 package edu.unaigomdie.superhero2024.feature.presentation.adapter
 
 import android.view.View
+import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import edu.unaigomdie.superhero2024.R
 import edu.unaigomdie.superhero2024.app.extension.loadImage
 import edu.unaigomdie.superhero2024.databinding.ItemSuperheroBinding
 import edu.unaigomdie.superhero2024.feature.domain.SuperHero
@@ -16,7 +18,6 @@ class SuperHeroViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
             slug.text = superHero.slug
             view.setOnClickListener {
                 onClick(superHero.id.toString())
-
             }
         }
 

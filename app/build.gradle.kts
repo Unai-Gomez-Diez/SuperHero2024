@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.androidx.navigation.safeargs)
 }
 
 android {
@@ -55,6 +56,11 @@ dependencies {
     implementation(libs.androidx.cardview)
     implementation(libs.coil)
     implementation (libs.com.faltenreich.skeletonlayout)
+    implementation (libs.androidx.navigation.fragment)
+    implementation (libs.androidx.navigation.ui)
+    implementation(libs.nav.fragment.ktx)
+   // implementation(libs.androidx.navigation.safe.args.gradle.plugin)
+
 
 
     //librerias para el testing

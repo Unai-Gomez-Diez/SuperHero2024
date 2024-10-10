@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/superheroes_fragment">
+    <fragment
+        android:id="@+id/superheroes_fragment"
+        android:name="edu.unaigomdie.superhero2024.feature.presentation.SuperHeroesFragment"
+        tools:layout="@layout/fragment_super_hero">
+
+        <action
+            android:id="@+id/action_superheroes_fragment_to_superheroes_detail_fragment"
+            app:destination="@id/superheroes_detail_fragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/superheroes_detail_fragment"
+        android:name="edu.unaigomdie.superhero2024.feature.presentation.SuperHeroDetailFragment"
+        tools:layout="@layout/fragment_super_hero_detail">
+
+        <argument
+            android:name="superHeroId"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_superheroes_detail_fragment_to_superheroes_fragment"
+            app:destination="@id/superheroes_fragment" />
+    </fragment>
+</navigation>
