@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/superheroes_fragment">
+    app:startDestination="@id/honkai_fragment">
     <fragment
         android:id="@+id/superheroes_fragment"
         android:name="edu.unaigomdie.superhero2024.feature.superhero.presentation.SuperHeroesFragment"
@@ -27,4 +27,25 @@
             android:id="@+id/action_superheroes_detail_fragment_to_superheroes_fragment"
             app:destination="@id/superheroes_fragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/honkai_fragment"
+        android:name="edu.unaigomdie.superhero2024.feature.honkai.presentation.HonkaiFragment"
+        tools:layout="@layout/fragment_honkai">
+        <action
+            android:id="@+id/action_honkai_fragment_to_honkai_detail_fragment"
+            app:destination="@id/honkai_detail_fragment"/>
+
+    </fragment>
+
+    <dialog
+        android:id="@+id/honkai_detail_fragment"
+        android:name="edu.unaigomdie.superhero2024.feature.honkai.presentation.HonkaiDetailFragment"
+        tools:layout="@layout/fragment_honkai_detail">
+        <argument
+            android:name="characterId"
+            app:argType="string" />
+
+
+    </dialog>
 </navigation>
