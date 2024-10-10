@@ -1,11 +1,12 @@
-package edu.unaigomdie.superhero2024.feature.data.remote
+package edu.unaigomdie.superhero2024.feature.superhero.data.remote
 
 
 import edu.unaigomdie.superhero2024.app.api.ApiClient
-import edu.unaigomdie.superhero2024.feature.domain.SuperHero
+import edu.unaigomdie.superhero2024.feature.superhero.domain.SuperHero
 
 class SuperHeroRemoteDataSource {
-    val apiClient = ApiClient()
+    val baseUrl = "https://akabab.github.io/superhero-api/api/"
+    val apiClient = ApiClient(baseUrl)
 
     suspend fun getSuperHeroes(): List<SuperHero> {
         apiClient.retrofit

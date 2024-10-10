@@ -1,12 +1,12 @@
-package edu.unaigomdie.superhero2024.feature.presentation
+package edu.unaigomdie.superhero2024.feature.superhero.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import edu.unaigomdie.superhero2024.app.domain.ErrorApp
-import edu.unaigomdie.superhero2024.feature.domain.GetSuperHeroUseCase
-import edu.unaigomdie.superhero2024.feature.domain.SuperHero
+import edu.unaigomdie.superhero2024.feature.superhero.domain.GetSuperHeroUseCase
+import edu.unaigomdie.superhero2024.feature.superhero.domain.SuperHero
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

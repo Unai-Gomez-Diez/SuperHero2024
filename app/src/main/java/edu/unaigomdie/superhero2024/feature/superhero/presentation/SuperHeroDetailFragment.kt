@@ -1,4 +1,4 @@
-package edu.unaigomdie.superhero2024.feature.presentation
+package edu.unaigomdie.superhero2024.feature.superhero.presentation
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -13,12 +13,13 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import edu.unaigomdie.superhero2024.R
 import edu.unaigomdie.superhero2024.app.domain.ErrorApp
 import edu.unaigomdie.superhero2024.app.extension.loadImage
 import edu.unaigomdie.superhero2024.databinding.FragmentSuperHeroBinding
 import edu.unaigomdie.superhero2024.databinding.FragmentSuperHeroDetailBinding
-import edu.unaigomdie.superhero2024.feature.domain.SuperHero
+import edu.unaigomdie.superhero2024.feature.superhero.domain.SuperHero
 
 class SuperHeroDetailFragment: Fragment() {
 
@@ -27,6 +28,8 @@ class SuperHeroDetailFragment: Fragment() {
 
     private lateinit var superHeroesFactory: SuperHeroesFactory
     private lateinit var viewModel: SuperHeroDetailViewModel
+
+    val args: SuperHeroDetailFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,8 +45,7 @@ class SuperHeroDetailFragment: Fragment() {
         superHeroesFactory = SuperHeroesFactory(requireContext())
         viewModel = superHeroesFactory.buildViewModelDetail()
         setupObservers()
-
-        val superHeroId = SuperHeroDetailFragmentArgs.fromBundle(requireArguments()).superHeroId
+        val superHeroId = args.superHeroId
         viewModel.viewCreated(superHeroId)
 
     }

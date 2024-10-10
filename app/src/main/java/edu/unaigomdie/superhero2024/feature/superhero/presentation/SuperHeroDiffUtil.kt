@@ -1,7 +1,7 @@
-package edu.unaigomdie.superhero2024.feature.presentation
+package edu.unaigomdie.superhero2024.feature.superhero.presentation
 
 import androidx.recyclerview.widget.DiffUtil
-import edu.unaigomdie.superhero2024.feature.domain.SuperHero
+import edu.unaigomdie.superhero2024.feature.superhero.domain.SuperHero
 
 class SuperHeroDiffUtil : DiffUtil.ItemCallback<SuperHero>() {
     override fun areItemsTheSame(oldItem: SuperHero, newItem: SuperHero): Boolean {

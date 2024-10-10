@@ -1,12 +1,12 @@
-package edu.unaigomdie.superhero2024.feature.presentation
+package edu.unaigomdie.superhero2024.feature.superhero.presentation
 
 
 import android.content.Context
-import edu.unaigomdie.superhero2024.feature.data.SuperHeroDataRepository
-import edu.unaigomdie.superhero2024.feature.data.local.SuperHeroXmlLocalDataSource
-import edu.unaigomdie.superhero2024.feature.data.remote.SuperHeroRemoteDataSource
-import edu.unaigomdie.superhero2024.feature.domain.GetSuperHeroUseCase
-import edu.unaigomdie.superhero2024.feature.domain.GetSuperHeroesUseCase
+import edu.unaigomdie.superhero2024.feature.superhero.data.SuperHeroDataRepository
+import edu.unaigomdie.superhero2024.feature.superhero.data.local.SuperHeroXmlLocalDataSource
+import edu.unaigomdie.superhero2024.feature.superhero.data.remote.SuperHeroRemoteDataSource
+import edu.unaigomdie.superhero2024.feature.superhero.domain.GetSuperHeroUseCase
+import edu.unaigomdie.superhero2024.feature.superhero.domain.GetSuperHeroesUseCase
 
 class SuperHeroesFactory(context: Context) {
     private val superHeroRemoteDataSource = SuperHeroRemoteDataSource()

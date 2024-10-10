@@ -1,9 +1,9 @@
-package edu.unaigomdie.superhero2024.feature.data.local
+package edu.unaigomdie.superhero2024.feature.superhero.data.local
 
 import android.content.Context
 import com.google.gson.Gson
 import edu.unaigomdie.superhero2024.R
-import edu.unaigomdie.superhero2024.feature.domain.SuperHero
+import edu.unaigomdie.superhero2024.feature.superhero.domain.SuperHero
 
 class SuperHeroXmlLocalDataSource(context: Context) {
 

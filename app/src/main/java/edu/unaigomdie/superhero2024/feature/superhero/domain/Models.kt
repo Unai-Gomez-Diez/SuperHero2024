@@ -1,4 +1,4 @@
-package edu.unaigomdie.superhero2024.feature.domain
+package edu.unaigomdie.superhero2024.feature.superhero.domain
 
 data class SuperHero(
     val id: Int,

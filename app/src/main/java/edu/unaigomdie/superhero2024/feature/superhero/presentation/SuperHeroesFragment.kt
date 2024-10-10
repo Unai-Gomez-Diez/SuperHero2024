@@ -1,4 +1,4 @@
-package edu.unaigomdie.superhero2024.feature.presentation
+package edu.unaigomdie.superhero2024.feature.superhero.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,7 +16,7 @@ import com.faltenreich.skeletonlayout.applySkeleton
 import edu.unaigomdie.superhero2024.R
 import edu.unaigomdie.superhero2024.app.domain.ErrorApp
 import edu.unaigomdie.superhero2024.databinding.FragmentSuperHeroBinding
-import edu.unaigomdie.superhero2024.feature.presentation.adapter.SuperHeroAdapter
+import edu.unaigomdie.superhero2024.feature.superhero.presentation.adapter.SuperHeroAdapter
 
 class SuperHeroesFragment: Fragment() {
     private var _binding: FragmentSuperHeroBinding? = null

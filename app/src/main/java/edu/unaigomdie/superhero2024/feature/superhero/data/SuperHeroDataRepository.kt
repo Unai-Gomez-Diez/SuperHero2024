@@ -1,9 +1,9 @@
-package edu.unaigomdie.superhero2024.feature.data
+package edu.unaigomdie.superhero2024.feature.superhero.data
 
-import edu.unaigomdie.superhero2024.feature.data.local.SuperHeroXmlLocalDataSource
-import edu.unaigomdie.superhero2024.feature.data.remote.SuperHeroRemoteDataSource
-import edu.unaigomdie.superhero2024.feature.domain.SuperHero
-import edu.unaigomdie.superhero2024.feature.domain.SuperHeroRepository
+import edu.unaigomdie.superhero2024.feature.superhero.data.local.SuperHeroXmlLocalDataSource
+import edu.unaigomdie.superhero2024.feature.superhero.data.remote.SuperHeroRemoteDataSource
+import edu.unaigomdie.superhero2024.feature.superhero.domain.SuperHero
+import edu.unaigomdie.superhero2024.feature.superhero.domain.SuperHeroRepository
 
 class SuperHeroDataRepository(
     private val remoteDataSource: SuperHeroRemoteDataSource,
