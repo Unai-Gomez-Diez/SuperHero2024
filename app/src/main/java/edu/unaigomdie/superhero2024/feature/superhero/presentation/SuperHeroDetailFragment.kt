@@ -37,6 +37,7 @@ class SuperHeroDetailFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentSuperHeroDetailBinding.inflate(inflater, container, false)
+
         return binding.root
     }
 
