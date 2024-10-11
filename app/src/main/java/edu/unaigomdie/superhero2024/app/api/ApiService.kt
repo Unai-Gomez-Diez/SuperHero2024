@@ -24,7 +24,7 @@ interface ApiService {
     @GET("pokemon/")
     suspend fun getPokemons(): Response<Page>
 
-    @GET("")
+    @GET(" ")
     suspend fun getPokemon(): Response<Pokemon>
 
 

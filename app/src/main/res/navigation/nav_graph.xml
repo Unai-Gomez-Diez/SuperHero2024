@@ -72,7 +72,20 @@
         <action
             android:id="@+id/pokemon_to_honkai"
             app:destination="@id/honkai_fragment"/>
+        <action
+            android:id="@+id/action_pokemon_fragment_to_pokemon_detail_fragment"
+            app:destination="@id/pokemon_detail_fragment"/>
 
     </fragment>
+
+    <fragment
+        android:id="@+id/pokemon_detail_fragment"
+        android:name="edu.unaigomdie.superhero2024.feature.pokemon.presentation.PokemonDetailFragment"
+        tools:layout="@layout/fragment_pokemon_detail">
+        <argument
+            android:name="pokemonUrl"
+            app:argType="string" />
+    </fragment>
+
 
 </navigation>

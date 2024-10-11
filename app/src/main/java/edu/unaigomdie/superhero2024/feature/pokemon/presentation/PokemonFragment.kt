@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import edu.unaigomdie.superhero2024.databinding.FragmentPokemonBinding
@@ -67,6 +68,6 @@ class PokemonFragment: Fragment() {
     }
 
     private fun navigateToDetail(pokemonUrl: String) {
-
+        findNavController().navigate(PokemonFragmentDirections.actionPokemonFragmentToPokemonDetailFragment(pokemonUrl))
     }
 }

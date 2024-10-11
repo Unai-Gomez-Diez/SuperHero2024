@@ -22,4 +22,11 @@ class PokemonFactory(context: Context) {
             getPokemonsUseCase
         )
     }
+
+    fun buildDetailViewModel(): PokemonDetailViewModel {
+        return PokemonDetailViewModel(
+            getPokemonUseCase
+        )
+
+    }
 }
