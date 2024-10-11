@@ -17,24 +17,30 @@ class SuperHeroesActivity : AppCompatActivity() {
                 R.id.item_1 -> {
                     if (navController.currentDestination?.id == R.id.honkai_fragment) {
                         navController.navigate(R.id.action_honkai_fragment_to_superheroes_fragment)
-                    }else{
+                    }else if(navController.currentDestination?.id == R.id.pokemon_fragment){
                         navController.navigate(R.id.pokemon_to_superhero)
+                    }else{
+                        false
                     }
                     true
                 }
                 R.id.item_2 -> {
                     if (navController.currentDestination?.id == R.id.superheroes_fragment) {
                         navController.navigate(R.id.action_superheroes_fragment_to_honkai_fragment)
-                    }else{
+                    }else if(navController.currentDestination?.id == R.id.pokemon_fragment){
                         navController.navigate(R.id.pokemon_to_honkai)
+                    }else{
+                        false
                     }
                     true
                 }
                 R.id.item_3 -> {
                     if (navController.currentDestination?.id == R.id.superheroes_fragment) {
                         navController.navigate(R.id.action_superheroes_fragment_to_pokemon_fragment)
-                    }else{
+                    }else if(navController.currentDestination?.id == R.id.honkai_fragment){
                         navController.navigate(R.id.action_honkai_fragment_to_pokemon_fragment)
+                    }else{
+                        false
                     }
                     true
                 }
