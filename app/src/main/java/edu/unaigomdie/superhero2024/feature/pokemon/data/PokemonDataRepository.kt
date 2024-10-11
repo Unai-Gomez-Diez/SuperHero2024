@@ -12,24 +12,24 @@ class PokemonDataRepository(
 ): PokemonRepository {
     override suspend fun getPokemons(): Page {
         val page = localDataSource.getPage()
-        return if (page != null) {
+        return if (page == null) {
             val pageRemote = remoteDataSource.getPokemons()
             localDataSource.savePage(pageRemote)
             pageRemote
         }else{
-            page!!
+            page
         }
 
     }
 
     override suspend fun getPokemon(pokemonUrl: String): Pokemon {
         val pokemon = localDataSource.getPokemon(pokemonUrl)
-        return if (pokemon != null) {
+        return if (pokemon == null) {
             val pokemonRemote = remoteDataSource.getPokemon(pokemonUrl)
             localDataSource.savePokemon(pokemonRemote)
             pokemonRemote
         }else{
-            pokemon!!
+            pokemon
         }
     }
 

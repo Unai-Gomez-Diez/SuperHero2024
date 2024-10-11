@@ -5,7 +5,7 @@ import edu.unaigomdie.superhero2024.feature.pokemon.domain.Page
 import edu.unaigomdie.superhero2024.feature.pokemon.domain.Pokemon
 
 class PokemonRemoteDataSource {
-    private val baseUrl = "https://pokeapi.co/api/v2/pokemon"
+    private val baseUrl = "https://pokeapi.co/api/v2/"
     lateinit var apiClient: ApiClient
 
     suspend fun getPokemons(): Page {

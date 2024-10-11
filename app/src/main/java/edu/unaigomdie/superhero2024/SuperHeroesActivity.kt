@@ -23,6 +23,11 @@ class SuperHeroesActivity : AppCompatActivity() {
                         .navigate(R.id.action_superheroes_fragment_to_honkai_fragment)
                     true
                 }
+                R.id.item_3 -> {
+                    Navigation.findNavController(this, R.id.nav_host_fragment)
+                        .navigate(R.id.action_superheroes_fragment_to_pokemon_fragment)
+                    true
+                }
                 else -> false
             }
         }

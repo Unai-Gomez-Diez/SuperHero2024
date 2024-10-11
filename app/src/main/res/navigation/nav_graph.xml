@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_superheroes_fragment_to_honkai_fragment"
             app:destination="@id/honkai_fragment"/>
+        <action
+            android:id="@+id/action_superheroes_fragment_to_pokemon_fragment"
+            app:destination="@id/pokemon_fragment"/>
 
         <action
             android:id="@+id/action_superheroes_fragment_to_superheroes_detail_fragment"
@@ -40,6 +43,9 @@
             android:id="@+id/action_honkai_fragment_to_honkai_detail_fragment"
             app:destination="@id/honkai_detail_fragment"/>
         <action
+            android:id="@+id/action_honkai_fragment_to_pokemon_fragment"
+            app:destination="@id/pokemon_fragment"/>
+        <action
             android:id="@+id/action_honkai_fragment_to_superheroes_fragment"
             app:destination="@id/superheroes_fragment"/>
 
@@ -55,4 +61,18 @@
 
 
     </dialog>
+
+    <fragment
+        android:id="@+id/pokemon_fragment"
+        android:name="edu.unaigomdie.superhero2024.feature.pokemon.presentation.PokemonFragment"
+        tools:layout="@layout/fragment_pokemon">
+        <action
+            android:id="@+id/pokemon_to_superhero"
+            app:destination="@id/superheroes_fragment"/>
+        <action
+            android:id="@+id/pokemon_to_honkai"
+            app:destination="@id/honkai_fragment"/>
+
+    </fragment>
+
 </navigation>

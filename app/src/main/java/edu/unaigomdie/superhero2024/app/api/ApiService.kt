@@ -21,7 +21,7 @@ interface ApiService {
     @GET("characters/{id}")
     suspend fun getCharacter(@Path("id") id: String): Response<Character>
 
-    @GET("")
+    @GET("pokemon/")
     suspend fun getPokemons(): Response<Page>
 
     @GET("")
