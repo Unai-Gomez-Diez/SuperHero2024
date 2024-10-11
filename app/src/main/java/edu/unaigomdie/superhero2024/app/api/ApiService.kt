@@ -1,6 +1,8 @@
 package edu.unaigomdie.superhero2024.app.api
 
 import edu.unaigomdie.superhero2024.feature.honkai.domain.Character
+import edu.unaigomdie.superhero2024.feature.pokemon.domain.Page
+import edu.unaigomdie.superhero2024.feature.pokemon.domain.Pokemon
 import edu.unaigomdie.superhero2024.feature.superhero.domain.SuperHero
 import retrofit2.Response
 import retrofit2.http.GET
@@ -18,6 +20,12 @@ interface ApiService {
 
     @GET("characters/{id}")
     suspend fun getCharacter(@Path("id") id: String): Response<Character>
+
+    @GET("")
+    suspend fun getPokemons(): Response<Page>
+
+    @GET("")
+    suspend fun getPokemon(): Response<Pokemon>
 
 
 }
