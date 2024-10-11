@@ -19,5 +19,8 @@
     <string name="slug">Slug:</string>
 
 
+    <string name="character_name_file_xml">Character</string>
+
+
     <string name="internet_error_activity_title">ERROR DE INTERNET</string>"
 </resources>

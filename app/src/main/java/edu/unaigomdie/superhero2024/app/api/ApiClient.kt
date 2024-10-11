@@ -3,9 +3,9 @@ package edu.unaigomdie.superhero2024.app.api
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ApiClient {
+class ApiClient(baseUrl: String) {
     var retrofit = Retrofit.Builder()
-        .baseUrl("https://akabab.github.io/superhero-api/api/")
+        .baseUrl(baseUrl)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
