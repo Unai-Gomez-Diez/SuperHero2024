@@ -9,12 +9,13 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import edu.unaigomdie.superhero2024.R
 import edu.unaigomdie.superhero2024.app.extension.loadImage
+import edu.unaigomdie.superhero2024.databinding.FragmentHonkaiBottomSheetBinding
 import edu.unaigomdie.superhero2024.databinding.FragmentHonkaiDetailBinding
 import edu.unaigomdie.superhero2024.feature.honkai.domain.Character
 import edu.unaigomdie.superhero2024.feature.superhero.presentation.SuperHeroDetailFragmentArgs
 
 class HonkaiDetailFragment: BottomSheetDialogFragment() {
-    private var _binding: FragmentHonkaiDetailBinding? = null
+    private var _binding: FragmentHonkaiBottomSheetBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var honkaiFactory: HonkaiFactory
@@ -27,7 +28,7 @@ class HonkaiDetailFragment: BottomSheetDialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentHonkaiDetailBinding.inflate(inflater, container, false)
+        _binding = FragmentHonkaiBottomSheetBinding.inflate(inflater, container, false)
 
 
         return binding.root
@@ -45,9 +46,11 @@ class HonkaiDetailFragment: BottomSheetDialogFragment() {
     private fun setupView(character: Character) {
         binding.apply {
             image.loadImage(character.img)
-            name.text = character.name
-            path.text = character.path
-            stars.text = character.rarity.toString()
+            bottomSheet.apply {
+                name.text = character.name
+                path.text = character.path
+                stars.text = character.rarity.toString()
+            }
         }
     }
 
