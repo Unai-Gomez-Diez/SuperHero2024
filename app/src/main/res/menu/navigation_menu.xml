@@ -8,7 +8,7 @@
     <item
         android:id="@+id/item_2"
         android:enabled="true"
-        android:icon="@drawable/ic_honkai"
+        android:icon="@drawable/ic_arrow_back"
         android:title="@string/honkai_name_file_xml"
         />
 
