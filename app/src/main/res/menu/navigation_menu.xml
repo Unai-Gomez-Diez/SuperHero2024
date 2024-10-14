@@ -8,15 +8,14 @@
     <item
         android:id="@+id/item_2"
         android:enabled="true"
-        android:icon="@drawable/ic_arrow_back"
-
-        android:title="@string/character_name_file_xml"
+        android:icon="@drawable/ic_honkai"
+        android:title="@string/honkai_name_file_xml"
         />
 
     <item
         android:id="@+id/item_3"
         android:enabled="true"
-        android:icon="@drawable/ic_arrow_back"
+        android:icon="@drawable/baseline_catching_pokemon_24"
 
         android:title="@string/pokemon_name_file_xml"
         />
