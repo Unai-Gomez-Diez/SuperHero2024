@@ -7,12 +7,9 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import edu.unaigomdie.superhero2024.R
 import edu.unaigomdie.superhero2024.app.extension.loadImage
 import edu.unaigomdie.superhero2024.databinding.FragmentHonkaiBottomSheetBinding
-import edu.unaigomdie.superhero2024.databinding.FragmentHonkaiDetailBinding
-import edu.unaigomdie.superhero2024.feature.honkai.domain.Character
-import edu.unaigomdie.superhero2024.feature.superhero.presentation.SuperHeroDetailFragmentArgs
+import edu.unaigomdie.superhero2024.feature.honkai.domain.Honkai
 
 class HonkaiDetailFragment: BottomSheetDialogFragment() {
     private var _binding: FragmentHonkaiBottomSheetBinding? = null
@@ -43,13 +40,13 @@ class HonkaiDetailFragment: BottomSheetDialogFragment() {
         viewModel.getCharacter(characterId)
     }
 
-    private fun setupView(character: Character) {
+    private fun setupView(honkai: Honkai) {
         binding.apply {
-            image.loadImage(character.img)
+            image.loadImage(honkai.img)
             bottomSheet.apply {
-                name.text = character.name
-                path.text = character.path
-                stars.text = character.rarity.toString()
+                name.text = honkai.name
+                path.text = honkai.path
+                stars.text = honkai.rarity.toString()
             }
         }
     }
@@ -60,7 +57,7 @@ class HonkaiDetailFragment: BottomSheetDialogFragment() {
                 //skeleton.showSkeleton()
             } else {
                 //skeleton.showOriginal()
-                setupView(it.character!!)
+                setupView(it.honkai!!)
             }
 
         }

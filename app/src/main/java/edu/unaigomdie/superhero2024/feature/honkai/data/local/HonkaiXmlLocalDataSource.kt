@@ -3,43 +3,43 @@ package edu.unaigomdie.superhero2024.feature.honkai.data.local
 import android.content.Context
 import com.google.gson.Gson
 import edu.unaigomdie.superhero2024.R
-import edu.unaigomdie.superhero2024.feature.honkai.domain.Character
+import edu.unaigomdie.superhero2024.feature.honkai.domain.Honkai
 
-class CharacterXmlLocalDataSource(context: Context) {
+class HonkaiXmlLocalDataSource(context: Context) {
     private val sharedPref = context.getSharedPreferences(
         context.getString(R.string.character_name_file_xml), Context.MODE_PRIVATE
     )
     private val gson = Gson()
 
-    fun saveCharacter(character: Character) {
+    fun saveCharacter(honkai: Honkai) {
         val editor = sharedPref.edit()
-        val characterGson = gson.toJson(character)
-        editor.putString(character.id.toString(), characterGson)
+        val characterGson = gson.toJson(honkai)
+        editor.putString(honkai.id.toString(), characterGson)
         editor.apply()
     }
 
-    fun saveCharacters(characters: List<Character>) {
+    fun saveCharacters(honkais: List<Honkai>) {
         val editor = sharedPref.edit()
-        characters.forEach { character ->
+        honkais.forEach { character ->
             editor.putString(character.id.toString(), gson.toJson(character))
         }
         editor.apply()
     }
 
-    fun getCharacter(characterId: String): Character? {
+    fun getCharacter(characterId: String): Honkai? {
         return sharedPref.getString(characterId, null)?.let {
-            gson.fromJson(it, Character::class.java)
+            gson.fromJson(it, Honkai::class.java)
         }
     }
 
-    fun getCharacters(): List<Character> {
-        val characters = mutableListOf<Character>()
+    fun getCharacters(): List<Honkai> {
+        val honkais = mutableListOf<Honkai>()
         val mapCharacters = sharedPref.all as Map<String, String>
         mapCharacters.values.forEach { jsonCharacter ->
-            val character = gson.fromJson(jsonCharacter, Character::class.java)
-            characters.add(character)
+            val honkai = gson.fromJson(jsonCharacter, Honkai::class.java)
+            honkais.add(honkai)
         }
-        return characters
+        return honkais
     }
 
     fun deleteCharacter(characterId: String) {

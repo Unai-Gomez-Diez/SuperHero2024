@@ -1,6 +1,6 @@
 package edu.unaigomdie.superhero2024.app.api
 
-import edu.unaigomdie.superhero2024.feature.honkai.domain.Character
+import edu.unaigomdie.superhero2024.feature.honkai.domain.Honkai
 import edu.unaigomdie.superhero2024.feature.pokemon.domain.Page
 import edu.unaigomdie.superhero2024.feature.pokemon.domain.Pokemon
 import edu.unaigomdie.superhero2024.feature.superhero.domain.SuperHero
@@ -16,10 +16,10 @@ interface ApiService {
     suspend fun getHero(@Path("id") id: String): Response<SuperHero>
 
     @GET("characters")
-    suspend fun getCharacters(): Response<List<Character>>
+    suspend fun getCharacters(): Response<List<Honkai>>
 
     @GET("characters/{id}")
-    suspend fun getCharacter(@Path("id") id: String): Response<Character>
+    suspend fun getCharacter(@Path("id") id: String): Response<Honkai>
 
     @GET("pokemon/")
     suspend fun getPokemons(): Response<Page>

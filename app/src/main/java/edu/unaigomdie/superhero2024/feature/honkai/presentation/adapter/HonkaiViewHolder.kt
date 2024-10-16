@@ -4,19 +4,19 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import edu.unaigomdie.superhero2024.app.extension.loadImage
 import edu.unaigomdie.superhero2024.databinding.ItemHonkaiBinding
-import edu.unaigomdie.superhero2024.feature.honkai.domain.Character
+import edu.unaigomdie.superhero2024.feature.honkai.domain.Honkai
 
 class HonkaiViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
     val itemHonkai = ItemHonkaiBinding.bind(view)
 
-    fun bind(character: Character, onClick: (characterId: String) -> Unit) {
+    fun bind(honkai: Honkai, onClick: (characterId: String) -> Unit) {
         itemHonkai.apply {
-            image.loadImage(character.img)
-            name.text = character.name
-            path.text = character.path
-            stars.text = character.rarity.toString()
+            image.loadImage(honkai.img)
+            name.text = honkai.name
+            path.text = honkai.path
+            stars.text = honkai.rarity.toString()
             view.setOnClickListener {
-                onClick(character.id.toString())
+                onClick(honkai.id.toString())
             }
 
         }

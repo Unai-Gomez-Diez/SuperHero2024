@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import edu.unaigomdie.superhero2024.app.domain.ErrorApp
-import edu.unaigomdie.superhero2024.feature.honkai.domain.Character
+import edu.unaigomdie.superhero2024.feature.honkai.domain.Honkai
 import edu.unaigomdie.superhero2024.feature.honkai.domain.GetCharactersUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,7 +21,7 @@ class HonkaiViewModel(
          _uistate.value = UiState(true)
          viewModelScope.launch(Dispatchers.IO) {
              val characters = getCharactersUseCase()
-             _uistate.postValue(UiState(character = characters))
+             _uistate.postValue(UiState(honkai = characters))
          }
 
 
@@ -30,7 +30,7 @@ class HonkaiViewModel(
     data class UiState(
         val isLoading: Boolean = false,
         val errorApp: ErrorApp? = null,
-        val character: List<Character> = emptyList()
+        val honkai: List<Honkai> = emptyList()
     )
 
 }

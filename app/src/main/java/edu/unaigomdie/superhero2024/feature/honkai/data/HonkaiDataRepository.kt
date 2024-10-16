@@ -1,16 +1,16 @@
 package edu.unaigomdie.superhero2024.feature.honkai.data
 
-import edu.unaigomdie.superhero2024.feature.honkai.data.local.CharacterXmlLocalDataSource
-import edu.unaigomdie.superhero2024.feature.honkai.data.remote.CharacterRemoteDataSource
-import edu.unaigomdie.superhero2024.feature.honkai.domain.Character
+import edu.unaigomdie.superhero2024.feature.honkai.data.local.HonkaiXmlLocalDataSource
+import edu.unaigomdie.superhero2024.feature.honkai.data.remote.HonkaiRemoteDataSource
+import edu.unaigomdie.superhero2024.feature.honkai.domain.Honkai
 import edu.unaigomdie.superhero2024.feature.honkai.domain.CharacterRepository
 
-class CharacterDataRepository(
-    private val remoteDataSource: CharacterRemoteDataSource,
-    private val localDataSource: CharacterXmlLocalDataSource
+class HonkaiDataRepository(
+    private val remoteDataSource: HonkaiRemoteDataSource,
+    private val localDataSource: HonkaiXmlLocalDataSource
 )
     : CharacterRepository {
-    override suspend fun getCharacters(): List<Character> {
+    override suspend fun getCharacters(): List<Honkai> {
         val characters = localDataSource.getCharacters()
         if (characters.isEmpty()) {
             val remoteCharacters = remoteDataSource.getCharacters()
@@ -21,7 +21,7 @@ class CharacterDataRepository(
         return characters
     }
 
-    override suspend fun getCharacter(id: String): Character? {
+    override suspend fun getCharacter(id: String): Honkai? {
         val character = localDataSource.getCharacter(id)
         if (character == null){
             localDataSource.deleteCharacters()

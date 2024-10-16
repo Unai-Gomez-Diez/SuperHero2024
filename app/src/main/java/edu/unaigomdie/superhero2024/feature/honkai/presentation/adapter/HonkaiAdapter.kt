@@ -4,10 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import edu.unaigomdie.superhero2024.R
-import edu.unaigomdie.superhero2024.feature.honkai.domain.Character
+import edu.unaigomdie.superhero2024.feature.honkai.domain.Honkai
 import edu.unaigomdie.superhero2024.feature.honkai.presentation.HonkaiDiffUtil
 
-class HonkaiAdapter: ListAdapter<Character, HonkaiViewHolder>(HonkaiDiffUtil()) {
+class HonkaiAdapter: ListAdapter<Honkai, HonkaiViewHolder>(HonkaiDiffUtil()) {
     lateinit var onClick: (characterId: String) -> Unit
     fun setEvent(onClick: (String) -> Unit) {
         this.onClick = onClick

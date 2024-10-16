@@ -2,8 +2,9 @@ package edu.unaigomdie.superhero2024.feature.honkai.domain
 
 import kotlinx.serialization.Serializable
 
+
 @Serializable
-data class Character (
+data class Honkai (
     val id: Int,
     val name: String,
     val rarity: Int,

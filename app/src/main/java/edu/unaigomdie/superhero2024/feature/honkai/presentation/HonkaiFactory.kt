@@ -1,20 +1,20 @@
 package edu.unaigomdie.superhero2024.feature.honkai.presentation
 
 import android.content.Context
-import edu.unaigomdie.superhero2024.feature.honkai.data.CharacterDataRepository
-import edu.unaigomdie.superhero2024.feature.honkai.data.local.CharacterXmlLocalDataSource
-import edu.unaigomdie.superhero2024.feature.honkai.data.remote.CharacterRemoteDataSource
+import edu.unaigomdie.superhero2024.feature.honkai.data.HonkaiDataRepository
+import edu.unaigomdie.superhero2024.feature.honkai.data.local.HonkaiXmlLocalDataSource
+import edu.unaigomdie.superhero2024.feature.honkai.data.remote.HonkaiRemoteDataSource
 import edu.unaigomdie.superhero2024.feature.honkai.domain.GetCharacterUseCase
 import edu.unaigomdie.superhero2024.feature.honkai.domain.GetCharactersUseCase
 
 class HonkaiFactory(context: Context) {
-    private val characterRemoteDataSource = CharacterRemoteDataSource()
-    private val characterXmlLocalDataSource = CharacterXmlLocalDataSource(context)
-    private val characterDataRepository = CharacterDataRepository(
-        characterRemoteDataSource,
-        characterXmlLocalDataSource)
-    private val getCharactersUseCase = GetCharactersUseCase(characterDataRepository)
-    private val getCharacterUseCase = GetCharacterUseCase(characterDataRepository)
+    private val honkaiRemoteDataSource = HonkaiRemoteDataSource()
+    private val honkaiXmlLocalDataSource = HonkaiXmlLocalDataSource(context)
+    private val honkaiDataRepository = HonkaiDataRepository(
+        honkaiRemoteDataSource,
+        honkaiXmlLocalDataSource)
+    private val getCharactersUseCase = GetCharactersUseCase(honkaiDataRepository)
+    private val getCharacterUseCase = GetCharacterUseCase(honkaiDataRepository)
 
     fun buildViewModel(): HonkaiViewModel {
         return HonkaiViewModel(

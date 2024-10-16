@@ -70,7 +70,7 @@ class HonkaiFragment: Fragment() {
                 skeleton.showSkeleton()
             } else {
                 skeleton.showOriginal()
-                honkaiAdapter.submitList(it.character)
+                honkaiAdapter.submitList(it.honkai)
             }
         }
         viewModel.uiState.observe(viewLifecycleOwner, observer)
