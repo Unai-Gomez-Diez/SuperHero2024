@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.androidx.navigation.safeargs.kotlin)
+    kotlin("plugin.serialization") version "1.8.0"
 }
 
 android {
@@ -60,6 +61,11 @@ dependencies {
     implementation (libs.androidx.navigation.ui)
     implementation(libs.nav.fragment.ktx)
    // implementation(libs.androidx.navigation.safe.args.gradle.plugin)
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.cio)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.kotlinx.serialization.json)
 
 
 
