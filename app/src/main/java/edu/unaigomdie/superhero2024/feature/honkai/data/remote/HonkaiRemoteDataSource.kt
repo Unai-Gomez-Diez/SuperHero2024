@@ -11,28 +11,21 @@ import io.ktor.serialization.kotlinx.json.json
 import io.ktor.utils.io.InternalAPI
 
 class HonkaiRemoteDataSource {
-    val baseUrl = "https://hsr-api.vercel.app/api/v1/"
-    val apiClient = ApiClient(baseUrl)
 
-    @OptIn(InternalAPI::class)
-    suspend fun getCharacters(): List<Honkai> {
-        apiClient.retrofit
-        val response = apiClient.apiService.getCharacters()
-        //return response.body() ?: emptyList()
-        val client = HttpClient(CIO){
-            install(ContentNegotiation) {
-                json()
-            }
+    val client = HttpClient(CIO){
+        install(ContentNegotiation) {
+            json()
         }
+    }
 
+    suspend fun getCharacters(): List<Honkai> {
         val response2: List<Honkai> = client.get("http://10.0.2.2:8080/characters").body()
         return response2
     }
 
 
-    suspend fun getCharacter(id: String): Honkai? {
-        apiClient.retrofit
-        val response = apiClient.apiService.getCharacter(id)
-        return response.body()
+    suspend fun getCharacter(id: String): Honkai {
+        val response2: Honkai = client.get("http://10.0.2.2:8080/characters/$id").body()
+        return response2
     }
 }
