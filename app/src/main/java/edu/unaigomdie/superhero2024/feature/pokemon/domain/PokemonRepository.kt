@@ -5,4 +5,6 @@ interface PokemonRepository {
     suspend fun getPokemons(): Page
 
     suspend fun getPokemon(pokemonUrl: String): Pokemon
+
+    suspend fun getMorePokemons(): Page
 }

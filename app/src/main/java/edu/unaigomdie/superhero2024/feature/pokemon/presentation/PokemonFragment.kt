@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import edu.unaigomdie.superhero2024.databinding.FragmentPokemonBinding
 import edu.unaigomdie.superhero2024.feature.pokemon.presentation.adapter.PokemonAdapter
 
@@ -52,8 +53,20 @@ class PokemonFragment: Fragment() {
                 }
                 adapter = pokemonAdapter
             }
+            list.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+                    if (!recyclerView.canScrollVertically(1)) {
+                        // Detecta si el usuario ha llegado al final de la lista
+                        viewModel.getMorePokemons()
+                    }
+                }
+
+            })
+
         }
     }
+
 
     fun setupObservers(){
         val observer = Observer<PokemonViewModel.UiState>{

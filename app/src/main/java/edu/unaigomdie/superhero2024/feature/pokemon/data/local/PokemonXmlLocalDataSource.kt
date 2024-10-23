@@ -50,5 +50,13 @@ class PokemonXmlLocalDataSource(context: Context) {
         sharedPrefPage.edit().remove(count.toString()).apply()
     }
 
+    fun saveMorePokemons(page: Page) {
+        val editor = sharedPrefPage.edit()
+        val pageGson = gson.toJson(page)
+        editor.putString("1", pageGson)
+        editor.apply()
+    }
+
+
 
 }

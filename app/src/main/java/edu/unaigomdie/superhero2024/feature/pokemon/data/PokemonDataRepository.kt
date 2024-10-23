@@ -33,4 +33,13 @@ class PokemonDataRepository(
         }
     }
 
+    override suspend fun getMorePokemons(): Page {
+        val page = localDataSource.getPage()
+        val more = remoteDataSource.getMorePokemons(page!!)
+        val list = page.results + more.results
+        val newPage = Page(more.count, more.next, more.previous, list)
+        localDataSource.saveMorePokemons(newPage)
+        return newPage
+    }
+
 }

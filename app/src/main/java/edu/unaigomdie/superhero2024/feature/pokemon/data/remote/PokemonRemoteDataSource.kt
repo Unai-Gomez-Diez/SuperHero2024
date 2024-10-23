@@ -19,4 +19,10 @@ class PokemonRemoteDataSource {
 
     }
 
+    suspend fun getMorePokemons(page: Page): Page {
+        apiClient = ApiClient(page.next)
+        return apiClient.apiService.getMorePokemons().body()!!
+    }
+
+
 }
